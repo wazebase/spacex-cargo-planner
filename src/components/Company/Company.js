@@ -4,11 +4,13 @@ import './Company.css';
 
 const Company = (props) => {
     const [boxes, setBoxes] = useState(props.boxes);
+
     //function that calculates number of required cargo bays
     const cargoNum = () => {
       if (boxes === null) {
         return 'none';
       }
+
       //creates a number array
       let arr = boxes.split(',').map(string => {
         if (!isNaN(parseFloat(string))) {
@@ -18,9 +20,11 @@ const Company = (props) => {
           return 0;
         }
       });
+      
       let sum = arr.reduce((acc, val) => acc + val);
       return Math.ceil(sum / 10);
     }
+
     const handleChange = (event) => {
       setBoxes(event.target.value);
       ls.backend(sessionStorage);

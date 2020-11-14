@@ -8,7 +8,7 @@ const Toolbar = (props) => {
       localStorage.clear();
       sessionStorage.clear();
       //gets all the data from shipments.json
-      fetch('https://bitbucket.org/hpstore/spacex-cargo-planner/raw/204125d74487b1423bbf0453f4dcb53a2161353b/shipments.json')
+      fetch(props.link)
         .then(response => response.json())
         .then(data => {
           props.setNewData(data);

@@ -13,12 +13,12 @@ function App() {
   const [names, setNames] = useState(null);
   const [loadClicked, setLoadClicked] = useState(false);
   const [searchInput, setSearchInput] = useState('');
-
+  const link = 'https://bitbucket.org/hpstore/spacex-cargo-planner/raw/204125d74487b1423bbf0453f4dcb53a2161353b/shipments.json';
   useEffect(() => {
      //checks if data was saved in local storage
     if (localStorage.length > 0) {
       sessionStorage.clear();
-      fetch('https://bitbucket.org/hpstore/spacex-cargo-planner/raw/204125d74487b1423bbf0453f4dcb53a2161353b/shipments.json')
+      fetch(link)
         .then(response => response.json())
         .then(data => {
           //connects saved data to shipments.json data
@@ -118,7 +118,7 @@ function App() {
         {names}
       </ul>
       <div id='info'>
-        <Toolbar setSearchInput={setSearchInput}
+        <Toolbar setSearchInput={setSearchInput} link = {link}
           setLoadClicked={setLoadClicked} loadClicked={loadClicked} setNewData={setNewData} />
         {company}
       </div>
