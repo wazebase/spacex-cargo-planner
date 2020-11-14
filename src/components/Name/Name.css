@@ -3,17 +3,13 @@ a {
     font-size: 17px;
     letter-spacing: 1.5px;
     font-weight: 530;
-    
 }
 #name-div {
     padding: 4px;
 }
 @media only screen and (max-width: 625px) {
     a{ 
-       margin-left: -30px;
-       font-size: 10px;
-    }
-    #name-div {
-        padding: 1px;
+       margin-left: -25px;
+       font-size: 14px;
     }
 }

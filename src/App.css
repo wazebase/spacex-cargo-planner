@@ -33,9 +33,3 @@
     margin-bottom:0px;
     font-family: 'Roboto', sans-serif;
 }
-
-@media only screen and (max-width: 325px) {
-    #list { 
-        width: 170px;
-    }
-}

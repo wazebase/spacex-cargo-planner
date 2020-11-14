@@ -6,10 +6,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 #company-container h1 {
-    font-size: 30px;
+    font-size: 25px;
 }
 #company-container h2 {
-    font-size: 22px;
+    font-size: 20px;
 }
 #company-container p {
     font-size: 18px;
@@ -28,13 +28,13 @@
 
 @media only screen and (max-width: 425px) {
     #company-container h1 {
-        font-size: 20px;
+        font-size: 16px;
     }
     #company-container h2 {
-        font-size: 14px;
+        font-size: 12px;
     }
     #company-container p {
-        font-size: 12px;
+        font-size: 10px;
     }
     #company-container input {
         height: 20px;
