@@ -46,9 +46,13 @@ button {
         font-size: 12px;
     }
     #toolbar {
+        padding: .2em;
         grid-template-columns: 1fr 2fr 
     }
     #app-name {
-        font-size: 15px;
+        font-size: 12px;
+    }
+    #search {
+        height: 25px;
     }
 }
