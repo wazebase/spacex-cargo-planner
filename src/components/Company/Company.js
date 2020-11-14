@@ -19,7 +19,6 @@ const Company = (props) => {
         }
       });
       let sum = arr.reduce((acc, val) => acc + val);
-      console.log(arr,sum,Math.ceil(sum / 10));
       return Math.ceil(sum / 10);
     }
     const handleChange = (event) => {
