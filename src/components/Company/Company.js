@@ -11,15 +11,15 @@ const Company = (props) => {
       }
       //creates a number array
       let arr = boxes.split(',').map(string => {
-        if (!isNaN(parseInt(string))) {
-          return parseInt(string);
+        if (!isNaN(parseFloat(string))) {
+          return parseFloat(string);
         }
         else {
           return 0;
         }
       });
       let sum = arr.reduce((acc, val) => acc + val);
-  
+      console.log(arr,sum,Math.ceil(sum / 10));
       return Math.ceil(sum / 10);
     }
     const handleChange = (event) => {
