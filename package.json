@@ -6,9 +6,13 @@
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.2",
     "@testing-library/user-event": "^12.2.2",
+    "local-storage": "^2.0.0",
     "react": "^17.0.1",
+    "react-beforeunload": "^2.4.0",
+    "react-beforeunload-component": "^1.2.2",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
+    "react-use-localstorage": "^3.5.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
