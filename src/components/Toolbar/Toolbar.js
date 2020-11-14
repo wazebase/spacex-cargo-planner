@@ -28,8 +28,9 @@ const Toolbar = (props) => {
         let key = sessionStorage.key(i);
         let value = sessionStorage.getItem(key);
         localStorage.setItem(key, value);
-        alert('You data was saved sucessfully')
       }
+      sessionStorage.clear();
+      alert('You data was saved sucessfully')
     }
     const handleSearch = (event) => {
       props.setSearchInput(event.target.value);

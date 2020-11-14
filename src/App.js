@@ -121,8 +121,8 @@ function App() {
     }
   }, [loadClicked, companyList]);
 
-  
-  //useBeforeunload((event) => event.preventDefault());
+  //show the message asking to save data if save button was not clicked and session storage was not cleared
+  useBeforeunload((event) => sessionStorage.length>0?event.preventDefault():null);
 
   return (
     <div id='container'>

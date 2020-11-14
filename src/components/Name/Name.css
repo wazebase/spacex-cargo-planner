@@ -8,3 +8,12 @@ a {
 #name-div {
     padding: 4px;
 }
+@media only screen and (max-width: 625px) {
+    a{ 
+       margin-left: -30px;
+       font-size: 10px;
+    }
+    #name-div {
+        padding: 1px;
+    }
+}

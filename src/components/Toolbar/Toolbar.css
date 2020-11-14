@@ -41,3 +41,14 @@ button {
     border-color: none;
     border-radius: 5px;
 }
+@media only screen and (max-width: 425px) {
+    button {
+        font-size: 12px;
+    }
+    #toolbar {
+        grid-template-columns: 1fr 2fr 
+    }
+    #app-name {
+        font-size: 15px;
+    }
+}

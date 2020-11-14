@@ -2,6 +2,7 @@
     display: grid;
     align-content: center;
     margin-left: 20px;
+    padding: 5px;
     font-family: 'Montserrat', sans-serif;
 }
 #company-container h1 {
@@ -23,4 +24,20 @@
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 1px;
+}
+
+@media only screen and (max-width: 425px) {
+    #company-container h1 {
+        font-size: 20px;
+    }
+    #company-container h2 {
+        font-size: 14px;
+    }
+    #company-container p {
+        font-size: 12px;
+    }
+    #company-container input {
+        height: 20px;
+        font-size: 10px;
+    }
 }
