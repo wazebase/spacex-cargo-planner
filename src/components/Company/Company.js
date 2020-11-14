@@ -33,11 +33,11 @@ const Company = (props) => {
     }
   
     return (
-      <div>
+      <div id='company-container'>
         <h1>{props.name}</h1>
         <h2>{props.email}</h2>
-        <p>Number of required cargo bays is {`${cargoNum()}`}</p>
-        <p>Cargo boxes</p>
+        <p>Number of required cargo bays is <strong>{`${cargoNum()}`}</strong></p>
+        <p id="cargo-boxes">Cargo boxes</p>
         <input value={boxes === null ? '' : boxes} onChange={handleChange}></input>
       </div>
     )

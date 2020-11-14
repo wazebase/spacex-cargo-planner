@@ -9,10 +9,18 @@ const Toolbar = (props) => {
       sessionStorage.clear();
       //gets all the data from shipments.json
       fetch(props.link)
-        .then(response => response.json())
+        .then(response =>   {
+          if (response.ok) {
+          return response.json();
+        } 
+        else {
+          throw new Error('Failed to load data');
+        }
+      })
         .then(data => {
           props.setNewData(data);
-        });
+        })
+        .catch(error => alert(error));
     }
     const handleSave = () => {
     //writes data from session storage to local
@@ -20,6 +28,7 @@ const Toolbar = (props) => {
         let key = sessionStorage.key(i);
         let value = sessionStorage.getItem(key);
         localStorage.setItem(key, value);
+        alert('You data was saved sucessfully')
       }
     }
     const handleSearch = (event) => {
@@ -28,9 +37,15 @@ const Toolbar = (props) => {
     
     return (
       <div id='toolbar'>
+        <p id='app-name'>Cargo Planner</p>
+       
+           <div id='tools'>
+           <input id='search' onChange={handleSearch} 
+           placeholder='&#xf002; search'/>
+          
         <button id='load' onClick={handleLoad}>Load</button>
         <button id='save' onClick={handleSave}>Save</button>
-        <input id='search' onChange={handleSearch} placeholder='search'></input>
+        </div>
       </div>
     );
   }

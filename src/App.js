@@ -1,4 +1,5 @@
 import './App.css';
+import './grid.css'
 import { useState, useEffect } from 'react';
 import ls from 'local-storage';
 import Company from './components/Company/Company.js';
@@ -14,12 +15,20 @@ function App() {
   const [loadClicked, setLoadClicked] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const link = 'https://bitbucket.org/hpstore/spacex-cargo-planner/raw/204125d74487b1423bbf0453f4dcb53a2161353b/shipments.json';
+  
   useEffect(() => {
      //checks if data was saved in local storage
     if (localStorage.length > 0) {
       sessionStorage.clear();
       fetch(link)
-        .then(response => response.json())
+        .then(response =>   {
+          if (response.ok) {
+          return response.json();
+        } 
+        else {
+          throw new Error('Failed to load data');
+        }
+      })
         .then(data => {
           //connects saved data to shipments.json data
           let changedData = data.map(info => {
@@ -30,7 +39,8 @@ function App() {
             return info;
           })
           setNewData(changedData);
-        });
+        })
+        .catch(error => alert(error));
     }
   }, []);
 //refreshes the data every time new company is clicked and opened
@@ -73,7 +83,8 @@ function App() {
         }
         // create list of company names
         return (
-          <li key={info.key} onClick={() => handleClick(info.id)}><Name name={info.name} /></li>
+          <li key={info.key} onClick={() => handleClick(info.id)}>
+            <Name name={info.name} /></li>
         )
       })
       //checks is something is typed in search list. if so, filters name list according to search input
@@ -110,16 +121,17 @@ function App() {
     }
   }, [loadClicked, companyList]);
 
-  useBeforeunload((event) => event.preventDefault());
+  
+  //useBeforeunload((event) => event.preventDefault());
 
   return (
     <div id='container'>
-      <ul id='list'>
+      <ul className='frame' id='list'>
         {names}
       </ul>
-      <div id='info'>
         <Toolbar setSearchInput={setSearchInput} link = {link}
           setLoadClicked={setLoadClicked} loadClicked={loadClicked} setNewData={setNewData} />
+         <div id='display'>  
         {company}
       </div>
     </div>
