@@ -15,20 +15,21 @@ function App() {
   const [loadClicked, setLoadClicked] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const link = 'https://bitbucket.org/hpstore/spacex-cargo-planner/raw/204125d74487b1423bbf0453f4dcb53a2161353b/shipments.json';
-  
+
   useEffect(() => {
-     //checks if data was saved in local storage
+    //checks if data was saved in local storage
     if (localStorage.length > 0) {
       sessionStorage.clear();
       fetch(link)
-        .then(response =>   {
+        .then(response => {
           if (response.ok) {
-          return response.json();
-        } 
-        else {
-          throw new Error('Failed to load data');
-        }
-      })
+            return response.json();
+          }
+          else {
+            throw new Error('Failed to load data');
+          }
+        })
+
         .then(data => {
           //connects saved data to shipments.json data
           let changedData = data.map(info => {
@@ -43,7 +44,8 @@ function App() {
         .catch(error => alert(error));
     }
   }, []);
-//refreshes the data every time new company is clicked and opened
+
+  //refreshes the data every time new company is clicked and opened
   useEffect(() => {
     if (newData !== null) {
       let changedData = newData.map(info => {
@@ -58,7 +60,8 @@ function App() {
       }
     }
   }, [company]);
-//creates new company list with all the company details information. 
+
+  //creates new company list with all the company details information. 
   useEffect(() => {
     if (newData !== null) {
       const list = newData.map(info => {
@@ -69,12 +72,13 @@ function App() {
       })
       setCompanyList(list);
     }
+
     // re-renders the list when data is changed or load button is clicked
   }, [newData, loadClicked]);
 
   useEffect(() => {
     if (newData !== null) {
-    
+
       const newNames = newData.map(info => {
         //adds method to change displayed company onClick
         const handleClick = (key) => {
@@ -87,6 +91,7 @@ function App() {
             <Name name={info.name} /></li>
         )
       })
+
       //checks is something is typed in search list. if so, filters name list according to search input
       if (searchInput.length > 0) {
         let filteredNames = newNames.filter(name => name.props.children.props.name.toLowerCase().slice(0, searchInput.length) === searchInput.toLowerCase());
@@ -96,6 +101,7 @@ function App() {
         setNames(newNames);
       }
     }
+
     //re-renders when company list or data is changed or something is typed into search box
   }, [newData, companyList, searchInput]);
 
@@ -122,16 +128,16 @@ function App() {
   }, [loadClicked, companyList]);
 
   //show the message asking to save data if save button was not clicked and session storage was not cleared
-  useBeforeunload((event) => sessionStorage.length>0?event.preventDefault():null);
+  useBeforeunload((event) => sessionStorage.length > 0 ? event.preventDefault() : null);
 
   return (
     <div id='container'>
       <ul className='frame' id='list'>
         {names}
       </ul>
-        <Toolbar setSearchInput={setSearchInput} link = {link}
-          setLoadClicked={setLoadClicked} loadClicked={loadClicked} setNewData={setNewData} />
-         <div id='display'>  
+      <Toolbar setSearchInput={setSearchInput} link={link}
+        setLoadClicked={setLoadClicked} loadClicked={loadClicked} setNewData={setNewData} />
+      <div id='display'>
         {company}
       </div>
     </div>
